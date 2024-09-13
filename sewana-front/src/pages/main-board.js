@@ -2,6 +2,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import '../assets/styles/main.css';
 
+import Compass from '../assets/images/compass-solid.svg';
+import ToDo from '../assets/images/list-check-solid.svg';
+import Pen from '../assets/images/pen-nib-solid.svg';
+import Checker from '../assets/images/stethoscope-solid.svg';
+import Profile from '../assets/images/circle-user-solid.svg';
+
 const HomePage = () => {
   const navigate = useNavigate();
 
@@ -71,21 +77,30 @@ const HomePage = () => {
 
       <footer className="navbar">
         <ul>
-          {/* Use onClick with navigate to handle navigation */}
-          <li onClick={() => handleItemClick('/main-board')}>
-            <img src="../data/img/icons/compass-solid-color.svg" alt="Compass" />
+          <li>
+            <a href="/main-board">
+              <img src={Compass} alt="Home" />
+            </a>
           </li>
-          <li onClick={() => handleItemClick('/main-todo')}>
-            <img src="../data/img/icons/list-check-solid.svg" alt="List" />
+          <li>
+            <a href="/main-todo">
+              <img src={ToDo} alt="To-Do" />
+            </a>
           </li>
-          <li onClick={() => handleItemClick('/main')}>
-            <img src="../data/img/icons/pen-nib-solid.svg" alt="Pen" />
+          <li>
+            <a href="/main">
+              <img src={Pen} alt="Notes" />
+            </a>
           </li>
-          <li onClick={() => handleItemClick('/checker-info')}>
-            <img src="../data/img/icons/stethoscope-solid.svg" alt="Stethoscope" />
+          <li>
+            <a href="/checker-info">
+              <img src={Checker} alt="Health" />
+            </a>
           </li>
-          <li onClick={() => handleItemClick('/login')}>
-            <img src="../data/img/icons/circle-user-solid.svg" alt="User" />
+          <li>
+            <a href="/mp-first">
+              <img src={Profile} alt="Profile" />
+            </a>
           </li>
         </ul>
       </footer>

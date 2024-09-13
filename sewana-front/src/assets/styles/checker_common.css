@@ -11,11 +11,12 @@ body {
 }
 
 header {
-  width: 100%;
-  text-align: center;
-  padding: 20px 0;
-  background-color: #ffffff;
-  z-index: 2; /* option bar 위에 있도록 설정 */
+  background-color: #4BB9B2; /* Background color of the header */
+  color: white; /* Text color */
+  padding: 10px 0; /* Padding for spacing */
+  text-align: center; /* Center the text */
+  font-size: 24px; /* Font size for the header text */
+  font-weight: bold; /* Bold text */
 }
 
 h1 {
@@ -38,7 +39,7 @@ h1 {
 }
 
 .option-bar a {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   text-decoration: none;
   padding: 10px 15px;
@@ -57,7 +58,7 @@ h1 {
 
 #next-button {
   position: fixed;
-  bottom: 20px;
+  bottom: 0px;
   right: 20px;
   padding: 10px 20px;
   font-size: 18px;
@@ -92,7 +93,7 @@ h1 {
 
 .navigation-arrows {
   position: fixed;
-  bottom: 80px;
+  bottom: 100px;
   width: calc(100% - 40px); /*화살표가 화면 안에 보이게 함*/
   display: flex;
   justify-content: space-between;
@@ -131,4 +132,57 @@ footer.navbar>ul {
   justify-content: space-around;
   align-items: center;
   height: 100%;
+}
+
+footer.navbar ul {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+footer.navbar ul li {
+  margin: 0;
+}
+
+footer.navbar ul li img {
+  width: 40px;  
+  height: 30px;  
+  object-fit: contain; 
+}
+
+/* Ensure the footer is positioned correctly */
+footer.navbar {
+  position: relative;
+  background-color: #f8f8f8; /* or any color you prefer */
+  padding: 10px 0;
+}
+
+/* Style for the navigation arrows */
+.navigation-arrows {
+  text-align: center;
+  margin-bottom: 60px; /* Adjust this value to ensure space above the footer */
+}
+
+.navigation-arrows .arrow {
+  display: inline-block;
+  font-size: 24px;
+  color: #4BB9B2; /* Adjust the color as needed */
+  text-decoration: none;
+}
+
+.navigation-arrows .return {
+  display: inline-block;
+  font-size: 24px;
+  color: #4BB9B2; /* Adjust the color as needed */
+  text-decoration: none;
+}
+
+.navigation-arrows .arrow.right {
+  margin-left: 10px; /* Spacing between arrows */
+}
+
+.navigation-arrows .return {
+  margin-right: 10px; /* Spacing between arrows */
 }

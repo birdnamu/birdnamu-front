@@ -2,6 +2,12 @@ import React from 'react';
 import '../assets/styles/checker_common.css';
 import '../assets/styles/checker_solution.css';
 
+import Compass from '../assets/images/compass-solid.svg';
+import ToDo from '../assets/images/list-check-solid.svg';
+import Pen from '../assets/images/pen-nib-solid.svg';
+import Checker from '../assets/images/stethoscope-solid.svg';
+import Profile from '../assets/images/circle-user-solid.svg';
+
 function SolutionPage() {
   // 진단 결과 예시 
   const diagnosisData = [
@@ -17,15 +23,15 @@ function SolutionPage() {
       </header>
 
       <main>
-        <div className="option-bar">
-          <a href="../html/checker_info.html" className="option">기본 정보</a>
-          <span className="arrow">▶</span>
-          <a href="../html/checker_symptom.html" className="option">증상 기록</a>
-          <span className="arrow">▶</span>
-          <a href="../html/checker_diagnosis.html" className="option">가능 질환</a>
-          <span className="arrow">▶</span>
-          <a href="../html/checker_solution.html" className="option active">대처법</a>
-        </div>
+      <div className="option-bar">
+        <a href="/checker-info" className="option">기본 정보</a>
+        <span className="arrow">▶</span>
+        <a href="/checker-symptom" className="option">증상 기록</a>
+        <span className="arrow">▶</span>
+        <a href="/checker-diagnosis" className="option">가능 질환</a>
+        <span className="arrow">▶</span>
+        <a href="/checker-solution" className="option active">대처법</a>
+      </div>
 
         <div id="sol">대처법</div>
 
@@ -40,36 +46,36 @@ function SolutionPage() {
         </div>
 
         <div className="navigation-arrows">
-          <a href="../html/checker_diagnosis.html" className="arrow left">&larr;</a>
-          <a href="./mp-first.html" className="arrow right">완료</a>
+          <a href="/checker-diagnosis" className="arrow left">&larr;</a>
+          <a href="/mp-first" className="arrow right">완료</a>
         </div>
       </main>
 
       <footer className="navbar">
         <ul>
           <li>
-            <a href="../html/main-board.html">
-              <img src="../data/img/icons/compass-solid.svg" alt="Home" />
+            <a href="/main-board">
+              <img src={Compass} alt="Home" />
             </a>
           </li>
           <li>
-            <a href="../html/main-todo.html">
-              <img src="../data/img/icons/list-check-solid.svg" alt="To-Do" />
+            <a href="/main-todo">
+              <img src={ToDo} alt="To-Do" />
             </a>
           </li>
           <li>
-            <a href="../html/main.html">
-              <img src="../data/img/icons/pen-nib-solid.svg" alt="Notes" />
+            <a href="/main">
+              <img src={Pen} alt="Notes" />
             </a>
           </li>
           <li>
-            <a href="../html/checker_info.html">
-              <img src="../data/img/icons/stethoscope-solid.svg" alt="Health" />
+            <a href="/checker-info">
+              <img src={Checker} alt="Health" />
             </a>
           </li>
           <li>
-            <a href="../html/login.html">
-              <img src="../data/img/icons/circle-user-solid.svg" alt="Profile" />
+            <a href="/mp-first">
+              <img src={Profile} alt="Profile" />
             </a>
           </li>
         </ul>

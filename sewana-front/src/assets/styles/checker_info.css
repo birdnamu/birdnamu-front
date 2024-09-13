@@ -40,3 +40,9 @@ input[type="text"] {
   background-color: #ffffff;
 }
 
+input[type="text"], select {
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%; /* Ensures the same width for both input and select */
+  box-sizing: border-box; /* Ensures padding and border don't affect width */
+}

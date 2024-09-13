@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import '../assets/styles/checker_common.css';
 import '../assets/styles/checker_symptom.css';
 
+import Compass from '../assets/images/compass-solid.svg';
+import ToDo from '../assets/images/list-check-solid.svg';
+import Pen from '../assets/images/pen-nib-solid.svg';
+import Checker from '../assets/images/stethoscope-solid.svg';
+import Profile from '../assets/images/circle-user-solid.svg';
+
 const symptomsData = {
   head: ['부리 변형', '부리 색 변화', '부리 균열', '부리 과도한 성장', '부리 출혈'],
   eyes: ['눈 분비물', '눈 충혈', '눈 부종', '시력 상실', '눈 주변 깃털 손실'],
@@ -67,15 +73,15 @@ const SymptomChecker = () => {
       </header>
 
       <main>
-        <div className="option-bar">
-          <a href="../html/checker_info.html" className="option">기본 정보</a>
-          <span className="arrow">▶</span>
-          <a href="../html/checker_symptom.html" className="option active">증상 기록</a>
-          <span className="arrow">▶</span>
-          <a href="../html/checker_diagnosis.html" className="option">가능 질환</a>
-          <span className="arrow">▶</span>
-          <a href="../html/checker_solution.html" className="option">대처법</a>
-        </div>
+      <div className="option-bar">
+        <a href="/checker-info" className="option">기본 정보</a>
+        <span className="arrow">▶</span>
+        <a href="/checker-symptom" className="option active">증상 기록</a>
+        <span className="arrow">▶</span>
+        <a href="/checker-diagnosis" className="option">가능 질환</a>
+        <span className="arrow">▶</span>
+        <a href="/checker-solution" className="option">대처법</a>
+      </div>
 
         <div className="content">
           <div className="fixed-container">
@@ -116,19 +122,39 @@ const SymptomChecker = () => {
           </div>
 
           <div className="navigation-arrows">
-            <a href="../html/checker_info.html" className="arrow left">&larr;</a>
-            <a href="../html/checker_solution.html" className="arrow right">&rarr;</a>
+            <a href="/checker-info" className="arrow left">&larr;</a>
+            <a href="/checker-diagnosis" className="arrow right">&rarr;</a>
           </div>
         </div>
       </main>
 
       <footer className="navbar">
         <ul>
-          <li><a href="../html/main-board.html"><img src="../data/img/icons/compass-solid.svg" alt="Home" /></a></li>
-          <li><a href="../html/main-todo.html"><img src="../data/img/icons/list-check-solid.svg" alt="To-Do" /></a></li>
-          <li><a href="../html/main.html"><img src="../data/img/icons/pen-nib-solid.svg" alt="Notes" /></a></li>
-          <li><a href="../html/checker_info.html"><img src="../data/img/icons/stethoscope-solid.svg" alt="Health" /></a></li>
-          <li><a href="../html/login.html"><img src="../data/img/icons/circle-user-solid.svg" alt="Profile" /></a></li>
+          <li>
+            <a href="/main-board">
+              <img src={Compass} alt="Home" />
+            </a>
+          </li>
+          <li>
+            <a href="/main-todo">
+              <img src={ToDo} alt="To-Do" />
+            </a>
+          </li>
+          <li>
+            <a href="/main">
+              <img src={Pen} alt="Notes" />
+            </a>
+          </li>
+          <li>
+            <a href="/checker-info">
+              <img src={Checker} alt="Health" />
+            </a>
+          </li>
+          <li>
+            <a href="/mp-first">
+              <img src={Profile} alt="Profile" />
+            </a>
+          </li>
         </ul>
       </footer>
     </div>

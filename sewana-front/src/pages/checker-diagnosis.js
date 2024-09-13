@@ -2,14 +2,18 @@ import React, { useEffect } from 'react';
 import '../assets/styles/checker_common.css';
 import '../assets/styles/checker_diagnosis.css';
 
+import Compass from '../assets/images/compass-solid.svg';
+import ToDo from '../assets/images/list-check-solid.svg';
+import Pen from '../assets/images/pen-nib-solid.svg';
+import Checker from '../assets/images/stethoscope-solid.svg';
+import Profile from '../assets/images/circle-user-solid.svg';
+
 function HealthAdvisorAI() {
   const diagnosisData = [
     { name: 'Diagnosis 1', percentage: '70%' },
     { name: 'Diagnosis 2', percentage: '60%' },
     { name: 'Diagnosis 3', percentage: '80%' },
     { name: 'Diagnosis 4', percentage: '65%' },
-    { name: 'Diagnosis 5', percentage: '55%' },
-    { name: 'Diagnosis 6', percentage: '75%' },
   ];
 
   useEffect(() => {
@@ -31,15 +35,15 @@ function HealthAdvisorAI() {
         <h1>건강 자문 AI</h1>
       </header>
       <main>
-        <div className="option-bar">
-          <a href="../html/checker_info.html" className="option">기본 정보</a>
-          <span className="arrow">▶</span>
-          <a href="../html/checker_symptom.html" className="option">증상 기록</a>
-          <span className="arrow">▶</span>
-          <a href="../html/checker_diagnosis.html" className="option active">가능 질환</a>
-          <span className="arrow">▶</span>
-          <a href="../html/checker_solution.html" className="option">대처법</a>
-        </div>
+      <div className="option-bar">
+        <a href="/checker-info" className="option">기본 정보</a>
+        <span className="arrow">▶</span>
+        <a href="/checker-symptom" className="option">증상 기록</a>
+        <span className="arrow">▶</span>
+        <a href="/checker-diagnosis" className="option active">가능 질환</a>
+        <span className="arrow">▶</span>
+        <a href="/checker-solution" className="option">대처법</a>
+      </div>
 
         <div className="symptoms">
           <div className="symptom-details">
@@ -55,36 +59,36 @@ function HealthAdvisorAI() {
         </div>
 
         <div className="navigation-arrows">
-          <a href="../html/checker_symptom.html" className="arrow left">&larr;</a>
-          <a href="../html/checker_solution.html" className="arrow right">&rarr;</a>
+          <a href="/checker-symptom" className="arrow left">&larr;</a>
+          <a href="/checker-solution" className="arrow right">&rarr;</a>
         </div>  
       </main>
 
       <footer className="navbar">
         <ul>
           <li>
-            <a href="../html/main-board.html">
-              <img src="../data/img/icons/compass-solid.svg" alt="Compass Icon" />
-            </a>
-          </li>                
-          <li>
-            <a href="../html/main-todo.html">
-              <img src="../data/img/icons/list-check-solid.svg" alt="Todo Icon" />
+            <a href="/main-board">
+              <img src={Compass} alt="Home" />
             </a>
           </li>
           <li>
-            <a href="../html/main.html">
-              <img src="../data/img/icons/pen-nib-solid.svg" alt="Pen Icon" />
+            <a href="/main-todo">
+              <img src={ToDo} alt="To-Do" />
             </a>
           </li>
           <li>
-            <a href="../html/checker_info.html">
-              <img src="../data/img/icons/stethoscope-solid.svg" alt="Stethoscope Icon" />
+            <a href="/main">
+              <img src={Pen} alt="Notes" />
             </a>
           </li>
           <li>
-            <a href="../html/login.html">
-              <img src="../data/img/icons/circle-user-solid.svg" alt="User Icon" />
+            <a href="/checker-info">
+              <img src={Checker} alt="Health" />
+            </a>
+          </li>
+          <li>
+            <a href="/mp-first">
+              <img src={Profile} alt="Profile" />
             </a>
           </li>
         </ul>

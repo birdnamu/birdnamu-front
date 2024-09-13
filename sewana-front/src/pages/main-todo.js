@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import '../assets/styles/todo.css';
 
+import Compass from '../assets/images/compass-solid.svg';
+import ToDo from '../assets/images/list-check-solid.svg';
+import Pen from '../assets/images/pen-nib-solid.svg';
+import Checker from '../assets/images/stethoscope-solid.svg';
+import Profile from '../assets/images/circle-user-solid.svg';
+
 const TodoPage = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
@@ -92,24 +98,33 @@ const TodoPage = () => {
           </article>
         </section>
       </main>
-      
+
       <footer className="navbar">
         <ul>
-          {/* Replacing static anchor tags with navigate */}
-          <li onClick={() => navigate('/main-board')}>
-            <img src="../data/img/icons/compass-solid.svg" alt="Compass Icon" />
+          <li>
+            <a href="/main-board">
+              <img src={Compass} alt="Home" />
+            </a>
           </li>
-          <li onClick={() => navigate('/main-todo')}>
-            <img src="../data/img/icons/list-check-solid-color.svg" alt="Todo Icon" />
+          <li>
+            <a href="/main-todo">
+              <img src={ToDo} alt="To-Do" />
+            </a>
           </li>
-          <li onClick={() => navigate('/main')}>
-            <img src="../data/img/icons/pen-nib-solid.svg" alt="Pen Icon" />
+          <li>
+            <a href="/main">
+              <img src={Pen} alt="Notes" />
+            </a>
           </li>
-          <li onClick={() => navigate('/checker-info')}>
-            <img src="../data/img/icons/stethoscope-solid.svg" alt="Stethoscope Icon" />
+          <li>
+            <a href="/checker-info">
+              <img src={Checker} alt="Health" />
+            </a>
           </li>
-          <li onClick={() => navigate('/login')}>
-            <img src="../data/img/icons/circle-user-solid.svg" alt="User Icon" />
+          <li>
+            <a href="/mp-first">
+              <img src={Profile} alt="Profile" />
+            </a>
           </li>
         </ul>
       </footer>

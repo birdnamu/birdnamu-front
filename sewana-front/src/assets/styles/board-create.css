@@ -1,189 +1,130 @@
-body{
-  font-family: Arial, sans-serif;
+/* Reset some basic CSS properties */
+* {
   margin: 0;
   padding: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   box-sizing: border-box;
 }
+
+/* Styling for the main container */
+.board-create-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 header {
   width: 100vw;
   height: 50px;
   border-bottom: solid #4BB9B2 1px;
-  border-radius: 0px;
   background-color: #ffffff;
-  color: #000000;
-  padding: 15px 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
+  padding: 10px 20px;
   position: fixed;
   top: 0;
-  left: 0;
   z-index: 1000;
 }
 
 header button {
-  padding-left: 20px;
-  box-sizing: border-box;
-
   background: none;
   border: none;
-  color: #000000;
+  color: #000;
   font-size: 15px;
   cursor: pointer;
 }
 
 header h1 {
   font-size: 16px;
-  color: #000000;
-  margin: 0;
-  flex: 1;
+  color: #000;
   text-align: center;
 }
 
-header>div {
-  height: 50px;
-  width: 70px;  
-
-  padding: 0;
-  margin: 0;
+header > div {
+  margin-left: auto;
 }
 
 input#submit[type="button"] {
-  height: 100%;
-  width: 70px;
-
-  padding: 0;
-  margin: 0;
-
   background-color: #4BB9B2;
   border: none;
-  border-radius: 0;
-  color: #ffffff;
+  padding: 10px 15px;
+  color: white;
   font-size: 15px;
-  font-weight: bold;
-}
-input#submit[type="button"]:hover{
   cursor: pointer;
-  background-color: #3b918c;
 }
 
-main{
-  width:100%;
-  max-width: 460px;
-
-  box-sizing: border-box;
-  overflow-y: auto;
+main {
   flex: 1;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-form{
-  box-sizing: border-box;
-}
-
-section.form, section.form-tail {
-  padding: 0px 10px;
-}
-
-section.form {
-  height: calc(100vh - 100px);
-  width: 100%;
+  margin-top: 60px; /* Adjust for fixed header */
   overflow-y: auto;
-
-  box-sizing: border-box;
+  padding: 10px;
+  max-width: 460px;
+  margin: 60px auto 60px auto;
 }
 
-section.form>article {
-  padding-top: 10px;
-  padding-bottom: 10px;
+/* Checkbox styling */
+.checkbox-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-section input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Title Input */
+.title input {
   width: 100%;
-  box-sizing: border-box;
-}
-
-label[for="checkbox"] {
-  color:#3b918c;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-input#title {
-  height: 36px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 5px 10px;
-
+  padding: 10px;
   font-size: 16px;
-  font-weight: 700;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-textarea#content{
+
+/* Content Textarea */
+.content textarea {
   width: 100%;
-  min-height: 300px;
-  height: auto;
-  box-sizing: border-box;
-  padding: 5px 10px;
+  padding: 10px;
+  min-height: 200px;
   resize: none;
-
-  font-family: inherit;
   font-size: 15px;
-  font-weight: 400;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-
+/* Form Footer */
 .form-tail {
-  border-top: solid #4BB9B2 1px;
-  box-sizing: border-box;
   width: 100vw;
-  height: 50px;
+  height: 60px;
   position: fixed;
   bottom: 0;
-  left: 0;
+  background-color: white;
+  border-top: solid #4BB9B2 1px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
-}
-.filebox{
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  justify-items: center;
   align-items: center;
-
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 460px;
+  padding: 10px;
 }
 
-.filebox>label{
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  margin-right: 10px;
-  box-sizing: border-box;
+.filebox {
+  display: flex;
+  align-items: center;
+}
 
+.filebox label {
   cursor: pointer;
 }
 
-.filebox>.upload-name {
-  display: inline-block;
-  height: 36px;
-  width: calc(100% - 50px);
-  box-sizing: border-box;
+.filebox input.upload-name {
+  margin-left: 10px;
+  width: 200px;
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
 }
 
 .filebox input[type="file"] {
-  position: absolute;
-  width: 0;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-  border: 0;
+  display: none;
 }
