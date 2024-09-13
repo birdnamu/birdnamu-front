@@ -76,7 +76,6 @@ const MyPage = () => {
         {activeSection === 'bird-info' && (
           <section id="bird-info" className="bird-info-container">
             <h2>반려조 정보</h2>
-            123
             <div id="add-bird">
               <button>
                 <a href="./mp-bird-create" className="button-link">반려조 추가하기</a>
