@@ -21,6 +21,7 @@ import MpFirst from './pages/mp-first';
 import MpUserUpdate from './pages/mp-user-update';
 import Signup2 from './pages/signup2';
 import Signup from './pages/signup';
+import SignupCompletePage from './pages/SignupCompletePage';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path="/mp-user-update" element={<MpUserUpdate />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup2" element={<Signup2 />} />
+        <Route path="/signup-complete" element={<SignupCompletePage />} />
 
         {/* 404 Page Not Found */}
         <Route path="*" element={<h1>404: Page Not Found</h1>} />

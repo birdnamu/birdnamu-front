@@ -1,103 +1,169 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../assets/styles/signup.css';
+import '../assets/styles/signup2.css';
 
 const SignupPage = () => {
-  const [fullAccept, setFullAccept] = useState(false);
-  const [termsAndConditions, setTermsAndConditions] = useState(false);
-  const [privacyPolicy, setPrivacyPolicy] = useState(false);
-  
+  const [formData, setFormData] = useState({
+    username: '',
+    userid: '',
+    password: '',
+    passwordConfirm: '',
+    email: '',
+    birthdate: '',
+    gender: 'female',
+  });
+
   const navigate = useNavigate();
 
-  const handleFullAcceptChange = (e) => {
-    const isChecked = e.target.checked;
-    setFullAccept(isChecked);
-    setTermsAndConditions(isChecked);
-    setPrivacyPolicy(isChecked);
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleTermsAndConditionsChange = (e) => {
-    setTermsAndConditions(e.target.checked);
-  };
+  // Handle form submission
+  const handleSubmit = async () => {
+    // Check if all required fields are filled
+    const allFieldsFilled = Object.values(formData).every((value) => value.trim() !== '');
+    if (!allFieldsFilled) {
+      alert('정보를 모두 입력해주세요.');
+      return;
+    }
 
-  const handlePrivacyPolicyChange = (e) => {
-    setPrivacyPolicy(e.target.checked);
-  };
+    // Validate that passwords match
+    if (formData.password !== formData.passwordConfirm) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
 
-  const handleNextButtonClick = () => {
-    if (termsAndConditions && privacyPolicy) {
-      // 원한다면 여기서 백엔드로 데이터 보낼 수 있음 (더 알아보기)
-      navigate('/signup2');
-    } else {
-      alert('이용약관 및 개인정보 수집 및 이용에 동의해야 합니다.');
+    // POST data to the backend (replace '/api/signup' with the actual backend endpoint)
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert('회원가입이 완료되었습니다.');
+        navigate('/login'); // Redirect to login page on success
+      } else {
+        alert('회원가입 중 오류가 발생했습니다.');
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
     }
   };
 
   return (
     <div>
       <header>
-        <button onClick={() => navigate('/login')} style={{ textDecoration: 'none' }}>뒤로가기</button>
+        <button onClick={() => navigate(-1)}>뒤로가기</button>
         <h1>회원가입</h1>
         <ul style={{ listStyle: 'none' }}>
-          <li id="current-step">1</li>
-          <li id="next-step">2</li>
+          <li id="last-step">1</li>
+          <li id="current-step">2</li>
         </ul>
       </header>
+      
       <main>
         <section className="title">
-          <div id="logo">새와나</div>
-          <div>이용약관에 동의해주세요.</div>
+          <div>회원정보를 입력해주세요.</div>
         </section>
+
         <section className="form">
-          <article>
-            <label htmlFor="full_accept">
-              <input
-                type="checkbox"
-                name="full_accept"
-                id="full_accept"
-                checked={fullAccept}
-                onChange={handleFullAcceptChange}
+          <form>
+            <article>
+              <label htmlFor="username">이름</label>
+              <input 
+                type="text" 
+                id="username" 
+                name="username" 
+                value={formData.username} 
+                onChange={handleChange} 
               />
-              전체 동의하기
-            </label>
-          </article>
+            </article>
+
+            <article>
+              <label htmlFor="userid">아이디</label>
+              <input 
+                type="text" 
+                id="userid" 
+                name="userid" 
+                value={formData.userid} 
+                onChange={handleChange} 
+              />
+            </article>
+
+            <article>
+              <label htmlFor="password">비밀번호</label>
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                value={formData.password} 
+                onChange={handleChange} 
+              />
+            </article>
+
+            <article>
+              <label htmlFor="passwordConfirm">비밀번호 확인</label>
+              <input 
+                type="password" 
+                id="passwordConfirm" 
+                name="passwordConfirm" 
+                value={formData.passwordConfirm} 
+                onChange={handleChange} 
+              />
+            </article>
+
+            <article>
+              <label htmlFor="email">이메일 주소</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                value={formData.email} 
+                onChange={handleChange} 
+              />
+            </article>
+
+            <article>
+              <label htmlFor="birthdate">생년월일</label>
+              <input 
+                type="date" 
+                id="birthdate" 
+                name="birthdate" 
+                value={formData.birthdate} 
+                onChange={handleChange} 
+              />
+            </article>
+
+            <article>
+              <label htmlFor="gender">성별</label>
+              <select 
+                name="gender" 
+                id="gender" 
+                value={formData.gender} 
+                onChange={handleChange}>
+                <option value="female">여성</option>
+                <option value="male">남성</option>
+                <option value="other">기타</option>
+              </select>
+            </article>
+          </form>
+        </section>
+
+        <section className="submit">
           <article>
-            <div>
-              <div>
-                <label htmlFor="terms_and_conditions">
-                  <input
-                    type="checkbox"
-                    name="terms_and_conditions"
-                    id="terms_and_conditions"
-                    checked={termsAndConditions}
-                    onChange={handleTermsAndConditionsChange}
-                  />
-                  서비스 이용약관
-                </label>
-                <div className="terms-content">이용약관 내용</div>
-              </div>
-              <div>
-                <label htmlFor="privacy_policy">
-                  <input
-                    type="checkbox"
-                    name="privacy_policy"
-                    id="privacy_policy"
-                    checked={privacyPolicy}
-                    onChange={handlePrivacyPolicyChange}
-                  />
-                  개인정보 수집 및 이용
-                </label>
-                <div className="terms-content">개인정보 수집 및 이용 내용</div>
-              </div>
-            </div>
+            <input 
+              type="button" 
+              id="submit" 
+              value="가입완료" 
+              onClick={handleSubmit} 
+            />
           </article>
         </section>
       </main>
-      <section className="submit">
-        <article>
-          <button id="submit" onClick={handleNextButtonClick}>다음</button>
-        </article>
-      </section>
     </div>
   );
 };
