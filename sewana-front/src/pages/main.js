@@ -1,8 +1,12 @@
-//npm install react-router-dom < 이거 해야 돌아감
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/styles/main.css';
+
+import Compass from '../assets/images/compass-solid.svg';
+import ToDo from '../assets/images/list-check-solid.svg';
+import Pen from '../assets/images/pen-nib-solid.svg';
+import Checker from '../assets/images/stethoscope-solid.svg';
+import Profile from '../assets/images/circle-user-solid.svg';
 
 const JournalPage = () => {
   const journals = [
@@ -11,8 +15,8 @@ const JournalPage = () => {
       title: '제목입니다',
       content: '내용 미리보기 입니다...',
       reaction: '공감 00 댓글 00',
-      image: '../data/img/사랑앵무.jpg',
-      link: './journal.html'
+      image: '/data/img/사랑앵무.jpg',
+      link: './journal'
     },
     {
       date: '0000년 00월 00일',
@@ -20,7 +24,7 @@ const JournalPage = () => {
       content: '내용 미리보기 입니다...',
       reaction: '공감 00 댓글 00',
       image: '',
-      link: './journal.html'
+      link: './journal'
     },
   ];
 
@@ -30,7 +34,7 @@ const JournalPage = () => {
         <div>
           <ul style={{ listStyle: 'none' }}>
             <li>
-              <object data="../data/img/icons/crow-solid.svg" type="image/svg+xml" aria-label="Logo"></object>
+              <object data="/data/img/icons/crow-solid.svg" type="image/svg+xml" aria-label="Logo"></object>
             </li>
             <li className="journal-title">
               <span id="bird-name">사랑</span>이의 성장일지
@@ -67,37 +71,37 @@ const JournalPage = () => {
           ))}
         </section>
         <div id="floating-btn">
-          <Link to="../html/journal-create.html">
-            <img src="../data/img/icons/circle-pluc-solid.svg" alt="추가 아이콘" />
+          <Link to="/journal-create">
+            <img src="/data/img/icons/circle-pluc-solid.svg" alt="추가 아이콘" />
           </Link>
         </div>
       </main>
       <footer className="navbar">
         <ul>
           <li>
-            <Link to="../html/main-board.html">
-              <img src="../data/img/icons/compass-solid.svg" alt="Board" />
-            </Link>
+            <a href="/main-board">
+              <img src={Compass} alt="Home" />
+            </a>
           </li>
           <li>
-            <Link to="../html/main-todo.html">
-              <img src="../data/img/icons/list-check-solid.svg" alt="To-Do" />
-            </Link>
+            <a href="/main-todo">
+              <img src={ToDo} alt="To-Do" />
+            </a>
           </li>
           <li>
-            <Link to="../html/main.html">
-              <img src="../data/img/icons/pen-nib-solid-color.svg" alt="Pen" />
-            </Link>
+            <a href="/main">
+              <img src={Pen} alt="Notes" />
+            </a>
           </li>
           <li>
-            <Link to="../html/checker_info.html">
-              <img src="../data/img/icons/stethoscope-solid.svg" alt="Info" />
-            </Link>
+            <a href="/checker-info">
+              <img src={Checker} alt="Health" />
+            </a>
           </li>
           <li>
-            <Link to="../html/login.html">
-              <img src="../data/img/icons/circle-user-solid.svg" alt="User" />
-            </Link>
+            <a href="/mp-first">
+              <img src={Profile} alt="Profile" />
+            </a>
           </li>
         </ul>
       </footer>

@@ -195,3 +195,11 @@ footer.navbar>ul {
     align-items: center;
     height: 100%;
 }
+
+.journal-title {
+    font-size: 24px; /* Adjust size as needed */
+    color: black; /* Make text color black */
+    white-space: nowrap; /* Ensure text stays on one line */
+    overflow: hidden; /* Prevent overflow */
+    text-overflow: ellipsis; /* Add ellipsis if text is too long */
+}

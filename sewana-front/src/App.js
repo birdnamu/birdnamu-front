@@ -28,7 +28,7 @@ function App() {
     <Router>
       <Routes>
         {/* Define routes for each page using the 'element' prop */}
-        <Route path="/" element={<Main />} />
+        <Route path="/main" element={<Main />} />
         <Route path="/board-create" element={<BoardCreate />} />
         <Route path="/board-update" element={<BoardUpdate />} />
         <Route path="/board" element={<Board />} />
@@ -48,6 +48,7 @@ function App() {
         <Route path="/mp-user-update" element={<MpUserUpdate />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup2" element={<Signup2 />} />
+
         <Route path="/signup-complete" element={<SignupCompletePage />} />
 
         {/* 404 Page Not Found */}
