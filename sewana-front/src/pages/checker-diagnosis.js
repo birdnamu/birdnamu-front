@@ -14,6 +14,11 @@ function HealthAdvisorAI() {
     { name: 'Diagnosis 2', percentage: '60%' },
     { name: 'Diagnosis 3', percentage: '80%' },
     { name: 'Diagnosis 4', percentage: '65%' },
+    { name: 'Diagnosis 5', percentage: '55%' },
+    { name: 'Diagnosis 6', percentage: '45%' },
+    { name: 'Diagnosis 7', percentage: '75%' },
+    { name: 'Diagnosis 8', percentage: '85%' },
+    { name: 'Diagnosis 9', percentage: '50%' },
   ];
 
   useEffect(() => {
@@ -35,15 +40,15 @@ function HealthAdvisorAI() {
         <h1>건강 자문 AI</h1>
       </header>
       <main>
-      <div className="option-bar">
-        <a href="/checker-info" className="option">기본 정보</a>
-        <span className="arrow">▶</span>
-        <a href="/checker-symptom" className="option">증상 기록</a>
-        <span className="arrow">▶</span>
-        <a href="/checker-diagnosis" className="option active">가능 질환</a>
-        <span className="arrow">▶</span>
-        <a href="/checker-solution" className="option">대처법</a>
-      </div>
+        <div className="option-bar">
+          <a href="/checker-info" className="option">기본 정보</a>
+          <span className="arrow">▶</span>
+          <a href="/checker-symptom" className="option">증상 기록</a>
+          <span className="arrow">▶</span>
+          <a href="/checker-diagnosis" className="option active">가능 질환</a>
+          <span className="arrow">▶</span>
+          <a href="/checker-solution" className="option">대처법</a>
+        </div>
 
         <div className="symptoms">
           <div className="symptom-details">
@@ -52,6 +57,10 @@ function HealthAdvisorAI() {
             <div className="symptom-item">해당 사항: 절뚝거림, 붓기, 열기</div>
             <a href="../html/checker_symptom.html" id="edit-symptoms">수정하기</a>
           </div>
+        </div>
+
+        <div className="diagnosis-message">
+          가능 질환은 다음과 같습니다
         </div>
 
         <div id="diagnosis-container" className="diagnosis">

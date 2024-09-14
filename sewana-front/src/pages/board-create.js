@@ -1,22 +1,72 @@
 import React, { useState } from 'react';
 import '../assets/styles/board-create.css';
-import camera from '../assets/images/camera-solid.svg';
+import cameraIcon from '../assets/images/camera-solid.svg'; // Update path according to your project structure
 
 function BoardCreate() {
-  const [fileName, setFileName] = useState('첨부파일'); // To store and display the uploaded file's name
+  const [formData, setFormData] = useState({
+    isQuestion: true, // Checkbox for "질문글", initially checked
+    title: '',
+    content: '',
+    file: null,
+    fileName: '첨부파일',
+  });
 
-  const handleBack = () => {
-    window.history.back(); // Navigate back to the previous page
-  };
+  const [imageSrc, setImageSrc] = useState(null);
 
-  const handleSubmit = () => {
-    console.log('Form submitted');
-    // Add submission logic here
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
 
   const handleFileChange = (e) => {
-    if (e.target.files.length > 0) {
-      setFileName(e.target.files[0].name); // Set the uploaded file's name
+    const file = e.target.files[0];
+    if (file) {
+      setFormData((prevData) => ({
+        ...prevData,
+        file: file,
+        fileName: file.name,
+      }));
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImageSrc(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleBack = () => {
+    window.history.back();
+  };
+
+  const handleSubmit = async () => {
+    const { isQuestion, title, content, file } = formData;
+    const formDataToSend = new FormData();
+    formDataToSend.append('isQuestion', isQuestion);
+    formDataToSend.append('title', title);
+    formDataToSend.append('content', content);
+    if (file) {
+      formDataToSend.append('file', file);
+    }
+
+    try {
+      const response = await fetch('/api/board-create', {
+        method: 'POST',
+        body: formDataToSend,
+      });
+
+      if (response.ok) {
+        alert('글이 성공적으로 작성되었습니다!');
+        // Optionally redirect to another page or clear the form
+      } else {
+        alert('글 작성 중 오류가 발생했습니다.');
+      }
+    } catch (error) {
+      console.error('Error during form submission:', error);
+      alert('오류가 발생했습니다.');
     }
   };
 
@@ -33,10 +83,18 @@ function BoardCreate() {
       <main>
         <form>
           <section className="form">
-            {/* Checkbox Section */}
+            {/* Checkbox for "질문글" with Checkbox on Right */}
             <article className="checkbox-section">
-              <input type="checkbox" id="question-checkbox" />
-              <label htmlFor="question-checkbox">질문글</label>
+              <label htmlFor="question-checkbox" className="checkbox-label">
+                <input
+                  type="checkbox"
+                  id="question-checkbox"
+                  name="isQuestion"
+                  checked={formData.isQuestion}
+                  onChange={handleChange}
+                />
+                질문글
+              </label>
             </article>
 
             {/* Title Input */}
@@ -44,7 +102,10 @@ function BoardCreate() {
               <input
                 type="text"
                 id="title"
+                name="title"
                 placeholder="제목을 입력하세요..."
+                value={formData.title}
+                onChange={handleChange}
                 required
               />
             </article>
@@ -54,19 +115,19 @@ function BoardCreate() {
               <textarea
                 name="content"
                 id="content"
+                placeholder="내용을 입력하세요..."
                 minLength="10"
                 maxLength="200"
-                placeholder="내용을 입력하세요..."
+                value={formData.content}
+                onChange={handleChange}
                 required
               ></textarea>
             </article>
           </section>
-
-          {/* Footer with File Upload */}
           <section className="form-tail">
             <article className="filebox">
-              <label htmlFor="file">
-                <img src="../data/img/icons/camera-solid.svg" alt="카메라아이콘" />
+              <label htmlFor="file" className="filebox-label">
+                <img src={cameraIcon} alt="카메라아이콘" />
               </label>
               <input
                 type="file"
@@ -76,13 +137,19 @@ function BoardCreate() {
               />
               <input
                 className="upload-name"
-                value={fileName}
+                value={formData.fileName}
                 placeholder="첨부파일"
                 readOnly
               />
             </article>
           </section>
         </form>
+        {imageSrc && (
+          <section className="image-preview">
+            <h2>미리보기:</h2>
+            <img src={imageSrc} alt="Selected" />
+          </section>
+        )}
       </main>
     </div>
   );

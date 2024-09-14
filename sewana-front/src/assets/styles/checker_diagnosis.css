@@ -1,63 +1,71 @@
-.symptoms {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 20px auto;
-  padding: 30px;  
-  border: 3px solid black;
-  border-radius: 8px; 
-  max-width: 600px;
-  box-sizing: border-box;
+/* Container for the diagnosis section */
+.diagnosis {
+  margin-top: 30px;
 }
 
-.symptom-details {
-  text-align: center;
-}
-
-.symptom-header {
-  font-size: 24px;
+/* Message above the diagnosis boxes */
+.diagnosis-message {
+  margin-bottom: 30px;
+  font-size: 18px;
   font-weight: bold;
+}
+
+/* Container for additional message */
+.message-container {
+  margin-top: 20px;
+}
+
+.message {
+  font-size: 16px;
   margin-bottom: 20px;
 }
 
+/* Container for the diagnosis boxes */
+#diagnosis-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  max-height: calc(100vh - 250px); /* Adjust based on other content and footer height */
+  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+}
+
+.diagnosis-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.percentage {
+  font-weight: bold;
+}
+
+/* Style for symptom details */
+.symptom-details {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background: #f9f9f9;
+}
+
+.symptom-header {
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .symptom-item {
-  margin-bottom: 10px;
+  margin: 5px 0;
 }
 
 #edit-symptoms {
   display: block;
-  margin-top: 20px;
+  margin-top: 10px;
+  color: #007bff;
   text-decoration: none;
-  color: #4BB9B2;
 }
 
 #edit-symptoms:hover {
   text-decoration: underline;
 }
-
-.diagnosis {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 800px; 
-  margin: 20px auto;
-  padding: 20px;
-}
-
-.diagnosis-box {
-  background-color: #cce5ff;
-  padding: 30px; 
-  border-radius: 8px; 
-  text-align: center;
-  font-size: 16px; 
-  font-weight: bold;
-  position: relative;
-}
-
-.percentage {
-  margin-top: 10px;
-  font-size: 14px; 
-  color: #333;
-}
-

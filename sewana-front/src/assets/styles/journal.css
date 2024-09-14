@@ -1,28 +1,25 @@
-body{
+body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
   margin: 0;
   padding: 0;
-
   width: 100vw;
   height: 100vh;
-
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
+
 header {
   width: 100vw;
   height: 50px;
   border-bottom: solid #4BB9B2 1px;
-  border-radius: 0px;
   background-color: #ffffff;
   color: #000000;
   padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
@@ -45,8 +42,8 @@ header h1 {
   text-align: center;
 }
 
-main{
-  width:100%;
+main {
+  width: 100%;
   overflow-y: auto;
   flex: 1;
   margin-top: 50px;
@@ -61,293 +58,285 @@ section.journal-layout {
   align-items: center;
 }
 
-section.journal-layout>section.post-layout{
+section.journal-layout > section.post-layout {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
   width: 100%;
   max-width: 460px;
-
-  
   border-bottom: solid #4BB9B2 1px;
 }
 
-article.journal-head{
+article.journal-head {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: start;
   width: 100%;
-  /*max-width: 460px;*/
-  box-sizing: border-box;
   margin-bottom: 10px;
-  
   padding: 10px;
 }
-#jtitle{
+
+#jtitle {
   font-size: 20px;
   font-weight: 400;
   margin: 20px 0px;
 }
-.journal-head>div#jhead{
+
+.journal-head > div#jhead {
   height: 32px;
   width: 100%;
-  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: end;
 }
+
 #jinfo {
   width: auto;
   height: 32px;
-
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-items: center;
 }
-#jimg{
+
+#jimg {
   width: 30px;
   height: 30px;
   border-radius: 15px;
   overflow: hidden;
   margin-right: 10px;
 }
-#jimg>img{
-  width:100%;
+
+#jimg > img {
+  width: 100%;
   object-fit: cover;
 }
 
-#jinfo>div>ul {
+#jinfo > div > ul {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: start;
-
   padding: 0;
   margin: 0;
   list-style: none;
 }
-ul>li#jauthor{
+
+ul > li#jauthor {
   color: #909090;
   font-size: 12px;
 }
 
-ul>li#jdate{
+ul > li#jdate {
   color: #909090;
   font-size: 12px;
 }
+
 .ud {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
   width: auto;
   height: 15.5px;
 }
-.ud>ul{
+
+.ud > ul {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
   height: 15.5px;
   list-style: none;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.ud>ul>li {
+
+.ud > ul > li {
   font-size: 14px;
-  color:#909090;
+  color: #909090;
 }
+
 #update-btn {
   width: auto;
   height: 15.5px;
 }
-#update-btn>a{
+
+#update-btn > a {
   text-decoration: none;
   height: 100%;
 }
-#delete-btn{
+
+#delete-btn {
   width: auto;
   height: 15.5px;
 }
-#delete-btn>a{
+
+#delete-btn > a {
   text-decoration: none;
   height: 100%;
 }
 
-article.jcontent {
-  width: 100%;
-  /*max-width: 460px;*/
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-article.jcontent>div:first-child{
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  border-radius: 10px;
-  border: solid #d9d9d9 1px;
-  
-  margin-bottom: 10px;
-}
-article.jcontent>div>img#jcontent-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-article.jcontent>div#jcontent-text {
-  width: 100%;
-  /*max-width: 460px;*/
-  
-  margin-bottom:10px;
-
-  font-size: 15px;
-}
-
-article.journal-tail {
+.jcontent {
   width: 100%;
   max-width: 460px;
-
-  box-sizing: border-box;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-article.journal-tail>div>ul{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-}
-li#like-btn {
-  width: 25px;
-  height: 25px;
-}
-article.journal-tail>div>ul>li {
-  margin-right: 5px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-
-section.comment-layout{
-  width: 100%;
-  max-width: 460px;
-}
-article#comment-item {
   display: flex;
   flex-direction: column;
   align-items: start;
-
+  margin: 10px;
   padding: 10px;
-  border-bottom: solid #4BB9B2 1px;
-}
-#comment-item>div{
-  margin-bottom: 5px;
-}
-#comment-item>div>ul{
-  display: flex;
-  flex-direction: start;
-  
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-#comment-item>div>ul>li{
-  margin-right: 10px;
 }
 
-#cimg{
-  width: 25px;
-  height: 25px;
-  overflow: hidden;
-  border-radius: 12.5px;
+.jcontent > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
 }
-#cimg>img {
-  width: 100px;
+
+.jcontent > div > img {
+  max-width: 100%;
+  max-height: 300px;
   object-fit: cover;
 }
 
-div#ccontent{
-  font-size: 15px;
-}
-div#cdate{
-  font-size: 14px
-}
-
-
-
-
-
-
-.comment-form {
-  background-color: #ffffff;
-  border-top: solid #4BB9B2 1px;
-  width: 100vw;
-  height: 50px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-.comment-form>article {
+#jcontent-text {
   width: 100%;
-  height: 100%;
+  font-size: 14px;
+  color: #000000;
+  margin: 10px 0;
+}
 
+.journal-tail {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.journal-tail > div > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
   padding: 0;
   margin: 0;
 }
+
+.journal-tail > div > ul > li {
+  font-size: 14px;
+  color: #909090;
+}
+
+.comment-layout {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#comment-item {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: solid #4BB9B2 1px;
+}
+
+.comment-form {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.comment-form input[type="text"] {
+  width: calc(100% - 80px);
+  padding: 5px;
+  font-size: 14px;
+}
+
+.comment-form input[type="button"] {
+  font-size: 12px; /* Smaller font size */
+  padding: 5px 10px; /* Adjust padding if needed */
+  cursor: pointer;
+}
+
+/* Adjust styles for the "글쓰기" button */
+header a {
+  font-size: 12px; /* Adjust font size here */
+}
+
+.comment-form {
+  padding: 20px;
+  background: #f9f9f9;
+}
+
 .comment-form ul {
   list-style: none;
-  margin:0;
-  padding:0;
-
-  display: flex;
-  flex-direction: row;
-
-  width: 100%;
-  height: 100%;
-}
-.comment-form ul>li:first-child{
-  width: calc(100% - 70px);
-  height: 100%;
-}
-.comment-form ul>li:last-child{
-  width: 70px;
-  height:100%;
-}
-input#comment{
-  height: 100%;
-  width: 100%
-}
-input#submit {
-  height: 100%;
-  width: 70px;
-
   padding: 0;
-  margin:0;
-  
-  background-color: #4BB9B2;
-  border: solid #4BB9B2 1px;
-  border-radius: 0;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: bold;
+  margin: 0;
 }
-input#submit:hover{
+
+.comment-form input[type="text"] {
+  width: 100%; /* Make the input field take the full width of its container */
+  max-width: 600px; /* Optional: Set a maximum width if needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.comment-form input[type="button"] {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
   cursor: pointer;
-  background-color: #3b918c;
+}
+
+.comment-form input[type="button"]:hover {
+  background-color: #0056b3;
+}
+
+/* journal.css */
+
+/* Common styles for both update and delete links */
+.ud ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ud li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.ud a {
+  text-decoration: none;
+  color: #007bff; /* Adjust color as needed */
+  font-size: 14px; /* Adjust font size as needed */
+}
+
+.ud a:hover {
+  text-decoration: underline;
+  color: #0056b3; /* Adjust hover color as needed */
+}
+
+/* Ensure that the delete link has no default styles that differ */
+#delete-btn a {
+  /* Inherit styles from the common link styles */
 }

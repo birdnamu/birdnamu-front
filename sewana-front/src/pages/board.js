@@ -1,91 +1,114 @@
-import React, { useState } from 'react';
-import '../assets/styles/journal.css'; //이게 맞는 css 파일인지 확인 필요
-function FreeBoard() {
-  const [likeCount, setLikeCount] = useState(1);
-  const [commentCount, setCommentCount] = useState(1);
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      author: '험난한앵집사의하루',
-      content: '병원에서 물어보시는 게 빠를 것 같은데, 코뉴어앵무라면 3개월 정도 기다리시면 확실히 아실 수 있을 것 같아요.',
-      date: '2024년 00월 00일',
-      likes: 5,
-    },
-  ]);
+import React, { useState, useEffect } from 'react';
+import '../assets/styles/journal.css'; 
+import { ReactComponent as HeartLogo } from '../assets/images/heart-regular.svg';
+import DefaultPfp from '../assets/images/circle-user-solid.svg';
+import DefaultImage from '../assets/images/사랑앵무.jpg';
+
+const JournalPage = () => {
+  const [post, setPost] = useState({});
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
 
-  const handleBack = () => {
-    window.history.back();
-  };
+  useEffect(() => {
+    // Fetch post data
+    fetch('/api/posts/1') // Update with your API endpoint
+      .then(response => response.json())
+      .then(data => setPost(data))
+      .catch(error => console.error('Error fetching post:', error));
+    
+    // Fetch comments data
+    fetch('/api/posts/1/comments') // Update with your API endpoint
+      .then(response => response.json())
+      .then(data => setComments(data))
+      .catch(error => console.error('Error fetching comments:', error));
+  }, []);
 
   const handleSubmit = () => {
-    if (newComment.trim() !== '') {
-      const newCommentObj = {
-        id: comments.length + 1,
-        author: '새로운 유저', 
-        content: newComment,
-        date: '2024년 00월 00일',
-        likes: 0,
-      };
-      setComments([...comments, newCommentObj]);
-      setCommentCount(commentCount + 1);
-      setNewComment('');
+    if (!newComment.trim()) {
+      // Prevent submission if the comment is empty
+      return;
     }
+
+    fetch('/api/posts/1/comments', { // Update with your API endpoint
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: newComment })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('New comment data:', data);
+        setComments(prevComments => [...prevComments, data]);
+        setNewComment('');
+      })
+      .catch(error => console.error('Error posting comment:', error));
   };
 
-  const handleLike = () => {
-    setLikeCount(likeCount + 1);
+  const handleDeletePost = () => {
+    if (window.confirm("정말 삭제하겠습니까?")) {
+      fetch('/api/posts/1', { // Update with your API endpoint
+        method: 'DELETE'
+      })
+        .then(response => {
+          if (response.ok) {
+            alert("게시글이 삭제되었습니다.");
+            // Redirect or handle post-deletion logic
+            window.location.href = '/'; // Redirect to home or another page
+          } else {
+            throw new Error('Failed to delete the post');
+          }
+        })
+        .catch(error => console.error('Error deleting post:', error));
+    }
   };
 
   return (
     <div>
       <header>
-        <button onClick={handleBack}>뒤로가기</button>
+        <button onClick={() => window.history.back()}>뒤로가기</button>
         <h1>자유게시판 <span>#질문</span></h1>
-        <div><a href="./board-create.html">글쓰기</a></div>
+        <div><a href="/board-create">글쓰기</a></div>
       </header>
       <main>
         <section className="journal-layout">
           <section className="post-layout">
             <article className="journal-head">
-              <div id="jtitle">성별은 언제쯤 알 수 있나요?</div>
+              <div id="jtitle">{post.title || 'Loading...'}</div>
               <div id="jhead">
                 <div id="jinfo">
-                  <div id="jimg"><img src="../data/img/사랑앵무.jpg" alt="유저 프로필 사진" /></div>
+                  <div id="jimg">
+                    <img src={post.profileImage || DefaultPfp} alt="유저 프로필 사진" />
+                  </div>
                   <div>
                     <ul>
-                      <li id="jauthor">유저닉네임</li>
-                      <li id="jdate">2024년 00월 00일</li>
+                      <li id="jauthor">{post.author || 'Loading...'}</li>
+                      <li id="jdate">{post.date || 'Loading...'}</li>
                     </ul>
                   </div>
                 </div>
                 <div className="ud">
                   <ul>
-                    <li id="update-btn"><a href="./board-update.html">수정</a></li>
+                    <li id="update-btn"><a href="./board-update">수정</a></li>
                     <li>|</li>
-                    <li id="delete-btn"><a href="">삭제</a></li>
+                    <li id="delete-btn"><a href="#" onClick={handleDeletePost}>삭제</a></li>
                   </ul>
                 </div>
               </div>
             </article>
             <article className="jcontent">
-              <div><img id="jcontent-img" src="../data/img/사랑앵무.jpg" alt="예시 사진" /></div>
-              <div id="jcontent-text">집사 된 지 3일차 초보집사입니다!
-                블루코뉴어 아가를 데려왔는데요.. 동물병원에서는
-                암컷인지 수컷인지 조금 더 커봐야 알 수 있다고 하는데,
-                언제쯤 알 수 있나요?</div>
+              <div><img id="jcontent-img" src={post.image || DefaultImage} alt="예시 사진" /></div>
+              <div id="jcontent-text">{post.content || 'Loading...'}</div>
             </article>
             <article className="journal-tail">
               <div>
                 <ul>
-                  <li id="like-btn" onClick={handleLike}><img src="../data/img/icons/heart-regular.svg" alt="좋아요 버튼" /></li>
+                  <li id="like-btn"><HeartLogo alt="좋아요 버튼" /></li>
                   <li>
                     <span>추천</span>
-                    <span id="like-count">{likeCount}</span>
+                    <span id="like-count">{post.likes || 0}</span>
                   </li>
                   <li>
                     <span>댓글</span>
-                    <span id="com-count">{commentCount}</span>
+                    <span id="com-count">{comments.length}</span>
                   </li>
                 </ul>
               </div>
@@ -93,10 +116,10 @@ function FreeBoard() {
           </section>
           <section className="comment-layout">
             {comments.map(comment => (
-              <article id="comment-item" key={comment.id}>
+              <article key={comment.id} id="comment-item">
                 <div>
                   <ul>
-                    <li id="cimg"><img src="../data/img/사랑앵무.jpg" alt="유저 프로필 사진" /></li>
+                    <li id="cimg"><img src={comment.profileImage || DefaultPfp} alt="유저 프로필 사진" /></li>
                     <li id="cauthor">{comment.author}</li>
                   </ul>
                 </div>
@@ -123,7 +146,12 @@ function FreeBoard() {
               </li>
               <li>
                 <label htmlFor="submit"></label>
-                <input type="button" id="submit" value="등록" onClick={handleSubmit} />
+                <input
+                  type="button"
+                  id="submit"
+                  value="등록"
+                  onClick={handleSubmit}
+                />
               </li>
             </ul>
           </article>
@@ -131,6 +159,6 @@ function FreeBoard() {
       </main>
     </div>
   );
-}
+};
 
-export default FreeBoard;
+export default JournalPage;
